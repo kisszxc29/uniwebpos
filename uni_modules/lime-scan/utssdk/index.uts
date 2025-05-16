@@ -1,0 +1,11 @@
+import {ScanCodeOption, GeneralCallbackResult} from './interface'
+export function scanCode(options: ScanCodeOption){
+	//  #ifndef APP-ANDROID || APP-IOS || WEB
+	uni.scanCode(options)
+	// #endif
+	// #ifdef WEB 
+	options.fail?.({
+		errMsg: 'lime-scan: web 不支持'
+	} as GeneralCallbackResult)
+	// #endif
+}

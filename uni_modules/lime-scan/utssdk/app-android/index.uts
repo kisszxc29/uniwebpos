@@ -1,0 +1,144 @@
+import Intent from 'android.content.Intent';
+import HmsScanAnalyzerOptions from "com.huawei.hms.ml.scan.HmsScanAnalyzerOptions";
+import HmsScan from "com.huawei.hms.ml.scan.HmsScan";
+import ScanUtil from "com.huawei.hms.hmsscankit.ScanUtil";
+import Activity from "android.app.Activity";
+import {HMScanManager, ScanCodeOption, GeneralCallbackResult, ScanCodeSuccessCallbackResult, ScanType } from "../interface.uts"
+
+
+const CODE_TYPE_MAP = new Map<Int, ScanType>([
+	[HmsScan.QRCODE_SCAN_TYPE, 'QR_CODE'],
+	[HmsScan.AZTEC_SCAN_TYPE, 'AZTEC'],
+	[HmsScan.CODABAR_SCAN_TYPE, 'CODABAR'],
+	[HmsScan.CODE39_SCAN_TYPE, 'CODE_39'],
+	[HmsScan.CODE93_SCAN_TYPE, 'CODE_93'],
+	[HmsScan.CODE128_SCAN_TYPE, 'CODE_128'],
+	[HmsScan.DATAMATRIX_SCAN_TYPE, 'DATA_MATRIX'],
+	[HmsScan.EAN8_SCAN_TYPE, 'EAN_8'],
+	[HmsScan.EAN13_SCAN_TYPE, 'EAN_13'],
+	[HmsScan.ITF14_SCAN_TYPE, 'ITF'],
+	[HmsScan.UPCCODE_A_SCAN_TYPE, 'UPC_A'],
+	[HmsScan.UPCCODE_E_SCAN_TYPE, 'UPC_E'],
+	[HmsScan.PDF417_SCAN_TYPE, 'PDF_417'],
+]);
+const SCAN_TYPE_MAP = new Map<string, Int>([
+	['barCode', HmsScan.CODABAR_SCAN_TYPE],
+	['datamatrix', HmsScan.DATAMATRIX_SCAN_TYPE],
+	['qrCode', HmsScan.QRCODE_SCAN_TYPE],
+	['pdf417', HmsScan.PDF417_SCAN_TYPE],
+])
+
+
+class LScanManager implements HMScanManager {
+	private creator : HmsScanAnalyzerOptions.Creator | null = null;
+	private timer : number = -1;
+	@Suppress("DEPRECATION")
+	scanCode(options : ScanCodeOption) {
+		try {
+			// 扫码返回 // requestCode
+			UTSAndroid.onAppActivityResult((_ : Int, resultCode : Int, data : Intent | null) => {
+				clearTimeout(this.timer)
+				this.timer = setTimeout(() => {
+					UTSAndroid.offAppActivityResult();
+					if (resultCode != Activity.RESULT_OK || data == null) {
+					    return
+					}
+					let errorCode = data.getIntExtra(ScanUtil.RESULT_CODE, ScanUtil.SUCCESS)
+					if(errorCode == ScanUtil.SUCCESS){
+						let hmsScans : HmsScan | null = data.getParcelableExtra<HmsScan>(ScanUtil.RESULT) //data!.getParcelableExtra(ScanUtil.RESULT)
+						if(hmsScans != null){
+							options.success?.({
+								charSet: '',
+								path: '',
+								rawData: '',
+								result: hmsScans.originalValue ?? '',
+								scanType: (CODE_TYPE_MAP.get(hmsScans.getScanType()) ?? '') as ScanType,
+								errMsg: 'ok'
+							} as ScanCodeSuccessCallbackResult)
+						} else {
+							options.fail?.({
+								errMsg: '无效返回'
+							} as GeneralCallbackResult)
+						}
+					}
+					if(errorCode == ScanUtil.ERROR_NO_READ_PERMISSION){
+						// 无文件权限，请求文件权限
+						options.fail?.({
+							errMsg: errorCode.toString()
+						} as GeneralCallbackResult)
+					}
+				}, 50)
+			})
+			
+			// 请求权限后扫码
+			this.checkSelfPermission().then(()=>{
+				let scanTypeSet = new Set<Int>()
+				let scanTypes : Int[] = []
+				
+				options.scanType?.forEach(item => {
+					if (SCAN_TYPE_MAP.has(item)) {
+						scanTypeSet.add(SCAN_TYPE_MAP.get(item)!)
+					}
+				})
+				scanTypeSet.forEach(item =>{
+					scanTypes.push(item)
+				})	
+				if (options.scanMode == null || options.scanMode == 'defaultMode') {
+					let creator = this.creator
+					if (creator == null) {
+						creator = new HmsScanAnalyzerOptions.Creator();
+					}
+					if (scanTypes.length == 1) {
+						creator.setHmsScanTypes(scanTypes[0])
+					} else if (scanTypes.length == 2) {
+						creator.setHmsScanTypes(scanTypes[0], scanTypes[1])
+					} else if (scanTypes.length == 3) {
+						creator.setHmsScanTypes(scanTypes[0], scanTypes[1], scanTypes[2])
+					} else {
+						creator.setHmsScanTypes(HmsScan.ALL_SCAN_TYPE);
+					}
+					// 0 表示设置扫码标题为 “扫描二维码/条码”
+					ScanUtil.startScan(UTSAndroid.getUniActivity()!, 100, creator.setViewType(0).create());
+				} else if (options.scanMode == 'multiProcessorMode') {
+								
+				}
+			}).catch(err =>{
+				options.fail?.({
+					errMsg: JSON.stringify(err)
+				} as GeneralCallbackResult)
+			})
+		} catch (e) {
+			options.fail?.({
+				errMsg: JSON.stringify(e)
+			} as GeneralCallbackResult)
+		}
+
+	}
+	checkSelfPermission():Promise<boolean> {
+		let permissionNeed = ["android.permission.CAMERA", "android.permission.READ_EXTERNAL_STORAGE"]
+		return new Promise((resoleve, reject)=>{
+			UTSAndroid.requestSystemPermission(UTSAndroid.getUniActivity()!, permissionNeed, function (allRight : boolean, grantedList : string[]) {
+				if (allRight) {
+					// 权限请求成功			
+					if (allRight) {
+						resoleve(true);
+					} else {
+						reject(grantedList);
+					}
+				} else {
+					//用户拒绝了部分权限
+				}
+			}, function (_ : boolean, grantedList : string[]) {
+				reject(grantedList);
+				//用户拒绝了部分权限
+			})
+		})
+	}
+}
+
+
+let globalManager = new LScanManager()
+
+export function scanCode(options : ScanCodeOption) {
+	globalManager.scanCode(options)
+}

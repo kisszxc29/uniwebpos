@@ -1,0 +1,93 @@
+{
+	"id": "lf-scan-code",
+	"displayName": "uts安卓原生扫码插件，谷歌MLKit机器学习扫描码-极速扫描二维码条形码",
+	"version": "1.1.0",
+	"description": "uts开发，接入谷歌扫码器（ML Kit Barcode Scanning API），毫秒级响应，导入即用(需打包成自定义基座)",
+	"keywords": [
+        "uniappxuts插件",
+        "二维码",
+        "扫描二维码",
+        "条形码",
+        "安卓扫码"
+    ],
+	"repository": "",
+	"engines": {
+		"HBuilderX": "^3.96"
+	},
+	"dcloudext": {
+		"type": "uts",
+		"sale": {
+			"regular": {
+				"price": "0.00"
+			},
+			"sourcecode": {
+				"price": "0.00"
+			}
+		},
+		"contact": {
+			"qq": "94605462"
+		},
+		"declaration": {
+			"ads": "无",
+			"data": "插件不采集任何数据",
+			"permissions": "<!-- 获取相机权限 -->\r\n\t<uses-permission android:name=\"android.permission.CAMERA\" android:description=\"@string/permission_camera_description\"/>\r\n\t<!-- 获取闪光灯权限 -->\r\n\t<uses-permission android:name=\"android.permission.FLASHLIGHT\" android:description=\"@string/permission_flashlight_description\"/>\r\n\t<!-- 相机特性 -->\r\n\t<uses-feature android:name=\"android.hardware.camera\" android:required=\"true\"/>\r\n\t<!-- 相机自动对焦特性 -->\r\n\t<uses-feature android:name=\"android.hardware.camera.autofocus\" android:required=\"true\"/>\r\n\t<!-- 震动权限 -->\r\n\t<uses-permission android:name=\"android.permission.VIBRATE\" android:description=\"@string/permission_vibrate_description\"/>\r\n\t<!-- 保持设备唤醒权限 -->\r\n\t<uses-permission android:name=\"android.permission.WAKE_LOCK\" android:description=\"@string/permission_wake_lock_description\"/>\r\n\t<!-- 读取外部存储权限 -->\r\n\t<uses-permission android:name=\"android.permission.READ_EXTERNAL_STORAGE\" android:description=\"@string/permission_read_external_storage_description\"/>\r\n\t<!-- 写入外部存储权限 -->\r\n\t<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" android:description=\"@string/permission_write_external_storage_description\"/>\r\n\t<!-- Google ML Kit Vision 依赖 -->\r\n\t<meta-data android:name=\"com.google.mlkit.vision.DEPENDENCIES\" android:value=\"barcode_ui\"/>\r\n"
+		},
+		"npmurl": ""
+	},
+	"uni_modules": {
+		"uni-ext-api": {
+			"uni": [
+                "initScanCode"
+            ]
+		},
+		"dependencies": [],
+		"encrypt": [],
+		"platforms": {
+			"cloud": {
+				"tcb": "y",
+				"aliyun": "y"
+			},
+			"client": {
+				"Vue": {
+					"vue2": "n",
+					"vue3": "y"
+				},
+				"App": {
+					"app-android": {
+						"minVersion": "19"
+					},
+                    "app-ios": {
+					}
+				},
+				"H5-mobile": {
+					"Safari": "n",
+					"Android Browser": "n",
+					"微信浏览器(Android)": "n",
+					"QQ浏览器(Android)": "n"
+				},
+				"H5-pc": {
+					"Chrome": "n",
+					"IE": "n",
+					"Edge": "n",
+					"Firefox": "n",
+					"Safari": "n"
+				},
+				"小程序": {
+					"微信": "n",
+					"阿里": "n",
+					"百度": "n",
+					"字节跳动": "n",
+					"QQ": "n",
+					"钉钉": "n",
+					"快手": "n",
+					"飞书": "n",
+					"京东": "n"
+				},
+				"快应用": {
+					"华为": "n",
+					"联盟": "n"
+				}
+			}
+		}
+	}
+}

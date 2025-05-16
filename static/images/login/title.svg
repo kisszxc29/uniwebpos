@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="69px" height="24px" viewBox="0 0 69 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Login</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" font-family="SFProDisplay-Bold, SF Pro Display" font-size="25" font-weight="bold" letter-spacing="1.9" line-spacing="34">
+        <g id="login-page" transform="translate(-49.000000, -413.000000)" fill="#000000">
+            <text id="Login">
+                <tspan x="48" y="430">Login</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

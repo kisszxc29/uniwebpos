@@ -1,0 +1,44 @@
+import {
+	UTSAndroid
+} from "io.dcloud.uts";
+import Application from 'android.app.Application'
+import GmsBarcodeScannerOptions from "com.google.mlkit.vision.codescanner.GmsBarcodeScannerOptions";
+import GmsBarcodeScanning from "com.google.mlkit.vision.codescanner.GmsBarcodeScanning";
+import Barcode from "com.google.mlkit.vision.barcode.common.Barcode";
+
+export function initScanCode(zoom : boolean = false) : Promise<any> {
+	// 构建一个 GmsBarcodeScannerOptions 实例。
+	const gmsBuilder = GmsBarcodeScannerOptions.Builder();
+	let options : GmsBarcodeScannerOptions;
+	if (zoom) {
+		// 是否启用远距离扫码自动缩放
+		options = gmsBuilder.enableAutoZoom().build();
+	} else {
+		options = gmsBuilder.build();
+	}
+	console.log(options);
+	let scanner = GmsBarcodeScanning.getClient(UTSAndroid.getAppContext() as Application, options);
+	return new Promise((resolve, _) => {
+		scanner
+			.startScan().addOnSuccessListener((barcode : Barcode) => {
+				// 扫码结果
+				resolve({
+					value: barcode.rawValue,
+					barcode: barcode,
+					status: "success"
+				});
+			}).addOnCanceledListener(() => {
+				// 取消操作
+				resolve({
+					status: "cancel"
+				})
+			})
+			.addOnFailureListener((error : any) => {
+				// 错误结果
+				resolve({
+					status: "error",
+					error: error
+				})
+			})
+	});
+}

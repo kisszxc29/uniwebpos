@@ -1,0 +1,94 @@
+.status{
+	width: 100%;
+	height: 100vh;
+	overflow: hidden;
+	.top{
+		height: 50vh;
+		border: 2rpx solid #E0E2E8;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		overflow: hidden;
+		.icon{
+			width: 160rpx;
+			height: 160rpx;
+			image{
+				width: 160rpx;
+				height: 160rpx;
+			}
+		}
+		.text{
+			height: 78rpx;
+			display: flex;
+			align-items: flex-end;
+			justify-content: center;
+			font-family: PingFangSC-Medium;
+			font-weight: 500;
+			font-size: 60rpx;
+			text-align: center;
+			margin-top: 48rpx;
+		}
+		.s{
+			color:#00C260;
+		}
+		.f{
+			color: #FF0000;
+		}
+		.money{
+			height: 154rpx;
+			font-family: PingFangSC-Medium;
+			font-weight: 500;
+			font-size: 100rpx;
+			color: #000000;
+			text-align: center;
+			margin-top: 32rpx;
+		}
+		.ercode{
+			width: 100%;
+			height: 102rpx;
+			padding: 0 49rpx;
+			box-sizing: border-box;
+			margin-top: 20rpx;
+			image{
+				width: 100%;
+				height: 100%;
+			}
+		}
+	}
+	.bottom{
+		border: 2rpx solid #E0E2E8;
+		padding: 18rpx 28rpx 26rpx;
+		font-weight: 400;
+		font-size: 36rpx;
+		color: #000000;
+		.title{
+			font-family: SFProDisplay-Regular;
+			font-weight: 400;
+			font-size: 36rpx;
+			color: #003DB0;
+			height: 78rpx;
+			line-height: 78rpx;
+		}
+		.name{
+			/*height: 78rpx;*/
+			line-height: 78rpx;
+		}
+	}
+	.button{
+		width: 566rpx;
+		height: 88rpx;
+		background: #0052D9;
+		border-radius: 8rpx;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-weight: 400;
+		font-size: 32rpx;
+		color: #FFFFFF;
+		text-align: center;
+		line-height: 44rpx;
+		margin: 0 auto;
+		margin-top: 108rpx;
+	}
+}

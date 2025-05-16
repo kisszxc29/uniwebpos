@@ -1,0 +1,57 @@
+{
+	"name": "Hd-SaleSmModule",
+	"id": "Hd-SaleSmModule",
+	"version": "1.0.0",
+	"description": "nativeplugin",
+	"_dp_type": "nativeplugin",
+	"_dp_nativeplugin": {
+		"android": {
+			"hooksClass": "cn.halolion.sunmi.HdAppProxy",
+			"plugins": [{
+					"type": "module",
+					"name": "Hd-SaleSmModule",
+					"class": "cn.halolion.sunmi.module.SaleSmModule"
+				},
+				{
+					"type": "module",
+					"name": "Hd-InitSunmiModule",
+					"class": "cn.halolion.sunmi.InitSunmiModule"
+				},
+				{
+					"type": "module",
+					"name": "Hd-RefundModule",
+					"class": "cn.halolion.sunmi.module.RefundModule"
+				},
+				{
+					"type": "module",
+					"name": "Hd-SaleVoidModule",
+					"class": "cn.halolion.sunmi.module.SaleVoidModule"
+				},
+				{
+					"type": "module",
+					"name": "Hd-PrintModule",
+					"class": "cn.halolion.sunmi.module.PrintSunmiModule"
+				},
+				{
+					"type": "module",
+					"name": "HL-HceSunmiModule",
+					"class": "cn.halolion.sunmi.module.HceSunmiModule"
+				}
+			],
+			"compileOptions": {
+				"sourceCompatibility": "1.8",
+				"targetCompatibility": "1.8"
+			},
+			"integrateType": "aar",
+			"minSdkVersion": 24,
+			"dependencies": [
+				"com.google.code.gson:gson:2.8.9",
+				"com.google.zxing:core:3.3.3",
+				"androidx.appcompat:appcompat:1.2.0",
+				"androidx.constraintlayout:constraintlayout:2.0.1",
+				"com.google.android.material:material:1.2.1"
+			]
+
+		}
+	}
+}

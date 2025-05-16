@@ -1,0 +1,117 @@
+.list{
+	padding-top: 180rpx;
+	padding-bottom: calc(40rpx + constant(safe-area-inset-bottom));
+	padding-bottom: calc(40rpx + env(safe-area-inset-bottom));
+	.card{
+		position: relative;
+		margin-bottom: 100rpx;
+		.title{
+			font-size: 40rpx;
+			color: #0058FF;
+			padding-left: 44rpx;
+			margin-bottom: 30rpx;
+		}
+		.item{
+			border-top: 2rpx solid #E0E2E8;
+			height: 192rpx;
+			display: flex;
+      box-sizing: border-box;
+			// align-items: center;
+			justify-content: space-between;
+      padding: 22rpx 30rpx 10rpx;
+      color: #404E6E;
+      .flex{
+        display: flex;
+      }
+      .center{
+        align-items: center;
+      }
+			.l{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+			}
+      .time{
+        display: flex;
+        align-items: center;
+        margin-bottom: 4rpx;
+        .img-box{
+          width: 70rpx;
+          text-align: center;
+          font-size: 0;
+        }
+      }
+      
+      .s{
+      	width: 38rpx;
+      	height: 38rpx;
+      	overflow: hidden;
+      	border-radius: 50%;
+        margin-right: 16rpx;
+        
+      	image{
+      		width: 100%;
+      		height: 100%;
+      	}
+      }
+      .payment{
+        font-size: 26rpx;
+        color: #000;
+        height: 60rpx;
+        display: flex;
+        align-items: center;
+      }
+      .n{
+      	font-size: 36rpx;
+      	color: #000;
+        font-weight: bold;
+      }
+			.r{
+				flex: 1;
+				display: flex;
+				align-items: center;
+        height: 100%;
+			}
+			.r-l{
+			  display: flex;
+			  flex-direction: column;
+			  height: 100%;
+			  justify-content: space-between;
+			  align-items: flex-end;
+			}
+			.card-img{
+			  width: 125rpx;
+        font-size: 0;
+			  image{
+			    width: 125rpx;
+			    height: 85rpx;
+			  }
+			}
+			.m{
+				font-weight: 500;
+				font-size: 56rpx;
+				color: #404E6E;
+				text-align: right;
+        line-height: 60rpx;
+			}
+			.t{
+				font-weight: 400;
+				font-size: 30rpx;
+				text-align: right;
+			}
+			.i{
+				width: 20rpx;
+				height: 100%;
+				text-align: center;
+				margin-left: 26rpx;
+			  display: flex;
+			  align-items: center;
+			  justify-content: flex-end;
+				image{
+					width: 17rpx;
+					height: 53rpx;
+				}
+			}
+		}
+	}
+}

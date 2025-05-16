@@ -1,0 +1,20 @@
+{
+  "name": "sunmi-git",
+  "version": "1.0.0",
+  "description": "#### Description pos机应用",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/WangXiaoFei-linguatutor/sunmi.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "json-bigint": "^1.0.0",
+    "loadsh": "0.0.4",
+    "plus-websocket": "^1.0.7"
+  }
+}

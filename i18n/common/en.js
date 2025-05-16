@@ -1,0 +1,90 @@
+export default {
+  History: 'Transaction',
+	Payment:'Transaction History',
+	PrintSummaryReceipt:'Print Summary Report',
+	
+	
+	Redemption:'Redemption History',
+	Setting:'Setting',
+	locale:'切换中文语言',
+	Print:'Print Receipt',
+	SingleReceipt:'Single Receipt',
+	Support:'Support',
+	
+	Cancel:'Cancel',
+	Refund:'Refund',
+	PasswordIsRequired:'Password is required',
+	Error:'Erro Message',
+	ErrorBtn:'Close transaction',
+	QueryTransactionHistory:'Query Transaction History',
+	success:'Success',
+	fail:'Failed',
+	cancel:'Failed',
+	canceled:'Failed',
+	pending:'Pending',
+	pending:'Pending',
+	refunded:'Refunded',
+	logout:'sign out',
+	status:{
+		success:'Success',
+		fail:'Failed',
+		btn:'Confirm'
+	},
+	
+	log:{
+		headTitle:'History',
+		title:'Select the query period',
+		start:'Start Date',
+		end:'End Date',
+		s:'Start',
+		e:'End',
+		transactions:'Transactions',
+		print:'Print Transaction Report'
+	},
+
+	TransactionsDetails:'Transactions Details',
+	TranscationID:'Transcation ID',
+	PaymentChannel:'Payment Channel',
+	DateProcessed :'Processed Time',
+	IssueRefund:'Issue Refund',
+	PrintReceipt:'Print Receipt',
+	
+	 
+	
+	
+	grab:{
+		t1:'Please scan this QR code with the',
+		t1_1:'',
+		t2: 'App to make the payment',
+		s1:'A green icon upon return',
+		s2:'signifies',
+		s3:'successful',
+		s4:'payment',
+		f1:'A red icon upon return',
+		f2:'indicates payment ',
+		f3:'failure',
+		w1:'No payment status return',
+		w2:'means',
+		w3:'unpaid order',
+		b:'Click to cancel this transaction'
+	},
+	PrintTerminalTransactions:'Print Terminal Transactions',
+	PrintTerminalTransactionsText:'When the PTT function is enabled, only print transactions are processed by this terminal. Keep it disabled to print transactions from all terminals (outlet transactions)',
+	detail_three_seconds_1_1:'The next receipt prints in 4s',
+	detail_three_seconds_1_2:'Tap the red button to skip',
+	detail_three_seconds_2_1:'The next receipt has been skipped',
+	detail_three_seconds_2_2:'Returning home in 4s',
+	detail_three_seconds_3_1:'Returning home in 4s',
+	detail_three_seconds_3_2:'Tap the blue button to go back',
+	button_left_size:'Back to home',
+	button_right_size_1:'Skip 2nd Recpt',
+	button_right_size_2:'Skipped',
+	tap_to_cancel:'Tap to cancel',
+	check_status:'Check Status',
+	tap_click:'Tap, Insert, or Swipe to pay',
+	tap_check_status_1:'Transaction status pending?',
+	tap_check_status_2:'Tap below to check payment status.',
+	no_transaction_record_found:'No transaction record found',
+	tips:'Tips',
+	total_size:'Total',
+}

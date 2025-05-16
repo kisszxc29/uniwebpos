@@ -1,0 +1,25 @@
+{
+  "pages": [
+    "pages/pay/pay",
+    "test/test",
+    "pages/imin/imin",
+    "pages/login/login",
+    "pages/mine/mine",
+    "pages/web/web",
+    "pages/status/status",
+    "pages/paymentHistory/paymentHistory",
+    "pages/paymentHistory/list/list",
+    "pages/paymentHistory/detail/detail"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#023dae",
+    "backgroundColor": "#F8F8F8",
+    "navigationStyle": "custom"
+  },
+  "usingComponents": {
+    "footer-logo": "/components/footerLogo"
+  }
+}
