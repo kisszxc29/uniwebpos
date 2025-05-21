@@ -1269,7 +1269,9 @@
         let res = await api.paymentPay(o);
         if (res.code == '000000') {
           let data = res.data;
-          _this.qr_url = data.transactionId;
+		  //测试：https://merchant-stage.uniwebpay.com/webpay/order_id/
+		  //正式  https://merchant.uniwebpay.com/webpay/order_id/
+          _this.qr_url = "https://merchant.uniwebpay.com/webpay/order_id/"+data.transactionId;
           _this.payMentType = item.acquirerType;
           _this.showGrabPay = true;
           _this.getPayStatusByWx(data.transactionId);
